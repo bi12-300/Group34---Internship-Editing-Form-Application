@@ -35,3 +35,23 @@ Content-Type: application/json
 {
     "username": "Saul"
 }
+
+###
+GET http://localhost:3000/forms/abcxyz
+
+###
+POST http://localhost:3000/forms/
+Content-Type: application/json
+
+{
+  "name": "Internship Application Form",
+  "description": "A form for internship applications",
+  "fields": [
+    { "label": "Name", "type": "text", "required": true },
+    { "label": "Email", "type": "email", "required": true },
+    { "label": "Resume", "type": "file", "required": false }
+  ]
+}
+
+###
+GET http://localhost:3000/forms/978ca102-4c54-48fb-9a0e-08b1de453db4
