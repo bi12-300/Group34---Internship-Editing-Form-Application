@@ -24,3 +24,6 @@ Content-Type: application/json
 {
     "username": "Saul"
 }
+
+###
+GET http://localhost:3000/

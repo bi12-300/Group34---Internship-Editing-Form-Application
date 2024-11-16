@@ -22,6 +22,10 @@ app.get('/posts', authenticateToken, (req, res) => {
     res.json(posts.filter(post => post.username === req.user.name))
 })
 
+app.get('/', (req, res) => {
+    res.json('hello')
+})
+
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]

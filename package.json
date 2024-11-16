@@ -4,10 +4,12 @@
   "description": "Group Info\r ==============================\r * Group ID: *34*\r * Project Name: *Internship Form Edit Online*",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js",
-    "devStartAuth": "nodemon authServer.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node server.js",
+  "devStart": "nodemon server.js",
+  "devStartAuth": "nodemon authServer.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",
