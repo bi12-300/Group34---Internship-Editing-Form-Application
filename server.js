@@ -14,8 +14,8 @@ app.delete('/logout', logoutController);
 app.post('/login', loginController);
 
 const posts = [
-    { username: 'Saul', title: 'Goodman' },
-    { username: 'Kim', title: 'Wexler' }
+    { username: 'Saul',password: 'saul123', title: 'Goodman' },
+    { username: 'Kim',password: 'kim456', title: 'Wexler' }
 ];
 
 app.get('/posts', authenticateToken, (req, res) => {
