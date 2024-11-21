@@ -1,21 +1,5 @@
 {
-  "name": "group34---internship-editing-form-application",
-  "version": "1.0.0",
-  "description": "Group Info\r ==============================\r * Group ID: *34*\r * Project Name: *Internship Form Edit Online*",
-  "main": "index.js",
-  "scripts": {
-    "devStart": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.11.4",
-    "nodemon": "^3.1.7",
-    "uuid": "^11.0.3"
+    "cors": "^2.8.5"
   }
 }

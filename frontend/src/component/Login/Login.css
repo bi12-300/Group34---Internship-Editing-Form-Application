@@ -1,0 +1,87 @@
+/* Container bao bọc form đăng nhập */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4f8; /* Màu nền nhẹ nhàng hơn */
+}
+
+/* Hộp đăng nhập */
+.login-box {
+  width: 360px; /* Tăng chiều rộng thêm một chút */
+  height: 500px; /* Điều chỉnh chiều cao để có đủ không gian */
+  padding: 25px; /* Tăng khoảng cách nội dung */
+  background-color: #ffffff; /* Màu trắng cho nền */
+  border-radius: 10px; /* Bo góc mềm mại */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bóng đổ sâu hơn */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+/* Tiêu đề */
+h2 {
+  margin-bottom: 25px;
+  font-size: 26px; /* Tăng kích thước tiêu đề */
+  color: #333333;
+  text-align: center;
+  font-weight: 600; /* Chữ đậm hơn */
+}
+
+/* Input và Select chung */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #dddddd; /* Màu viền dịu hơn */
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+/* Hiệu ứng khi focus vào ô input */
+input:focus, select:focus {
+  border-color: #007BFF; /* Đổi màu viền khi chọn */
+  outline: none; /* Loại bỏ viền outline mặc định */
+}
+
+/* Nút chung */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #007BFF; /* Màu xanh chủ đạo */
+  color: #ffffff;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hiệu ứng hover cho nút */
+button:hover {
+  background-color: #0056b3; /* Màu xanh đậm hơn */
+  opacity: 0.95;
+}
+
+/* Nút Sign Up */
+.signup-button {
+  background-color: #28a745; /* Màu xanh lá */
+}
+
+.signup-button:hover {
+  background-color: #218838; /* Xanh lá đậm hơn khi hover */
+}
+
+/* Nền của dashboard */
+.dashboard {
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* Gradient xanh hiện đại hơn */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
