@@ -94,6 +94,30 @@ const loginController = async (req, res) => {
     }
 };
 
+const bcrypt = require("bcrypt");
+const User = require("./user");
+
+const registerController = async (req, res) => {
+  const { username, password, role } = req.body;
+
+  if (!username || !password || !role) {
+    return res.status(400).json({ message: "Thiếu thông tin bắt buộc" });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash mật khẩu
+    const userId = await User.create({ username, password: hashedPassword, role });
+
+    res.status(201).json({ message: "Đăng ký thành công", userId });
+  } catch (error) {
+    console.error("Lỗi khi đăng ký:", error.message);
+    res.status(500).json({ message: "Đăng ký thất bại" });
+  }
+};
+
+module.exports = { ...otherControllers, registerController };
+
+
 module.exports = {
     tokenController,
     logoutController,

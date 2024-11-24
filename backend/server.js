@@ -46,3 +46,11 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
+
+  const { registerController } = require('./authController');
+
+app.post('/register', registerController);
+
+const errorHandler = require('./errorHandler');
+
+app.use(errorHandler);

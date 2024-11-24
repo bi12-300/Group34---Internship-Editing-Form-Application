@@ -5,3 +5,21 @@ const instance = axios.create({
 });
 
 export default instance;
+
+export const loginAPI = async (username, password) => {
+  try {
+    const response = await instance.post("/login", { username, password });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export const registerAPI = async (username, password, role) => {
+  try {
+    const response = await instance.post("/register", { username, password, role });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
