@@ -1,0 +1,47 @@
+.topnav-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #023164; /* Background color */
+  color: white;
+}
+
+.topnav-admin .logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.topnav-links {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.topnav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topnav-links a:hover {
+  text-decoration: underline;
+}
+
+.topnav-links a:active {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 20px;
+}

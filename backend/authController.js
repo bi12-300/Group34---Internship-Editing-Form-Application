@@ -1,9 +1,11 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const db = require('./db');
 const User = require("../backend/user");
 
 let refreshTokens = [];
 
+// Login function
 const login = async (req, res) => {
     const { username, password } = req.body;
   
@@ -23,14 +25,29 @@ const login = async (req, res) => {
       console.error(err);
       res.status(500).json({ error: "Database error" });
     }
-  };
-  
-  module.exports = { login };
+};
 
+// Middleware để kiểm tra quyền truy cập của người dùng (xác thực token)
+const authMiddleware = (req, res, next) => {
+    const token = req.header('x-auth-token');
+    if (!token) {
+        return res.status(401).json({ msg: 'No token, authorization denied' });
+    }
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded.user;  // Lưu thông tin người dùng vào req.user
+        next();
+    } catch (err) {
+        res.status(401).json({ msg: 'Token is not valid' });
+    }
+};
+
+// Generate Access Token
 const generateAccessToken = (user) => {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
 };
 
+// Token Refresh Function (làm mới token)
 const tokenController = (req, res) => {
     const refreshToken = req.body.token;
 
@@ -46,6 +63,7 @@ const tokenController = (req, res) => {
     });
 };
 
+// Logout Function
 const logoutController = (req, res) => {
     const refreshToken = req.body.token;
 
@@ -59,67 +77,27 @@ const logoutController = (req, res) => {
     res.sendStatus(204); // Thành công, không có nội dung trả về
 };
 
-const loginController = async (req, res) => {
-    const { username, password } = req.body;
+// Controller để cập nhật thông tin người dùng (PUT)
+const updateUserController = async (req, res) => {
+    const { name, email, internshipTopic } = req.body;
+    const userId = req.user.userId;  // Lấy ID người dùng từ JWT token
 
     try {
-        // Truy vấn thông tin người dùng từ database
-        const [rows] = await db.query('SELECT * FROM users WHERE username = ?', [username]);
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ msg: 'User not found' });
 
-        // Kiểm tra nếu không tìm thấy người dùng
-        if (rows.length === 0) {
-            return res.status(404).json({ message: 'Tên đăng nhập không tồn tại' });
-        }
+        // Cập nhật thông tin người dùng
+        user.name = name || user.name;
+        user.email = email || user.email;
+        user.internshipTopic = internshipTopic || user.internshipTopic;
 
-        const user = rows[0];
+        await user.save(); // Lưu thay đổi vào database
 
-        // Kiểm tra mật khẩu
-        const isMatch = await bcrypt.compare(password, user.password_hash);
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Mật khẩu không chính xác' });
-        }
-
-        // Tạo Access Token và Refresh Token
-        const accessToken = generateAccessToken({ userId: user.user_id, username: user.username, role: user.role });
-        const refreshToken = jwt.sign({ userId: user.user_id, username: user.username, role: user.role }, process.env.REFRESH_TOKEN_SECRET);
-
-        // Lưu Refresh Token vào danh sách hoặc cơ sở dữ liệu (nếu cần)
-        refreshTokens.push(refreshToken);
-
-        // Trả về token cho client
-        res.json({ accessToken, refreshToken });
-    } catch (error) {
-        console.error('Lỗi khi xử lý đăng nhập:', error);
-        res.status(500).json({ message: 'Lỗi máy chủ' });
+        res.json(user);  // Trả về thông tin người dùng đã cập nhật
+    } catch (err) {
+        console.error('Error updating user:', err);
+        res.status(500).json({ msg: 'Server error' });
     }
 };
 
-const bcrypt = require("bcrypt");
-const User = require("./user");
-
-const registerController = async (req, res) => {
-  const { username, password, role } = req.body;
-
-  if (!username || !password || !role) {
-    return res.status(400).json({ message: "Thiếu thông tin bắt buộc" });
-  }
-
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10); // Hash mật khẩu
-    const userId = await User.create({ username, password: hashedPassword, role });
-
-    res.status(201).json({ message: "Đăng ký thành công", userId });
-  } catch (error) {
-    console.error("Lỗi khi đăng ký:", error.message);
-    res.status(500).json({ message: "Đăng ký thất bại" });
-  }
-};
-
-module.exports = { ...otherControllers, registerController };
-
-
-module.exports = {
-    tokenController,
-    logoutController,
-    loginController
-};
+module.exports = { login, authMiddleware, tokenController, logoutController, updateUserController };

@@ -1,0 +1,41 @@
+.sidebar-student {
+  width: 250px;
+  background-color: #1976D2; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-student .sidebar-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #1565C0; 
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.sidebar-student .sidebar-item:hover {
+  background-color: #404dbe; 
+}
+
+.sidebar-student .sidebar-item.active {
+  background-color: #383ac4; 
+  color: #ffffff;
+}
+
+.sidebar-student .submenu {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.sidebar-student .submenu a {
+  display: block;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sidebar-student .submenu a:hover {
+  background-color: #81C784; 
+}

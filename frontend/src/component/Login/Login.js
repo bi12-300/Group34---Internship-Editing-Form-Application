@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Thư viện dùng để gửi yêu cầu HTTP
+import axios from 'axios'; 
 import './Login.css';
 
 function Login() {
-  const [username, setUsername] = useState(''); // Lưu giá trị nhập vào username
-  const [password, setPassword] = useState(''); // Lưu giá trị nhập vào password
-  const [role, setRole] = useState('Student'); // Lưu giá trị nhập vào role
-  const navigate = useNavigate(); // Dùng để chuyển hướng sang trang khác sau khi đăng nhập thành công
+  const [username, setUsername] = useState(''); 
+  const [password, setPassword] = useState(''); 
+  const [role, setRole] = useState('Student'); 
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Ngừng hành động mặc định của form (không reload trang)
+    e.preventDefault();  
 
     if (username && password && role) {
       try {
-        // Gửi yêu cầu đăng nhập tới backend
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post('http://localhost:5000/login', {
           username,
           password,
           role
@@ -23,9 +22,7 @@ function Login() {
 
         if (response.status === 200) {
           const data = response.data;
-          // Lưu token vào localStorage
           localStorage.setItem('token', data.token);
-          // Chuyển hướng đến Dashboard
           navigate('/dashboard');
         }
       } catch (error) {

@@ -1,0 +1,122 @@
+.document-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.document-header {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    justify-content: center;
+}
+
+.search-input {
+    flex: 1;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+   
+}
+
+.filter-button{
+    height: 36px;
+    padding: 8px 15px;
+    background-color: #007BFF; 
+    color: white;
+    border: none;
+    margin-right: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.reset-button,
+.add-button {
+    height: 36px;
+    width: 36px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-button:hover,
+.reset-button:hover,
+.add-button:hover {
+    background-color: #0056b3;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #e3f2fd;
+    min-width: 160px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu button {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #007BFF;
+}
+
+.dropdown-menu button:hover {
+    background-color: #e1f5fe;
+}
+
+.document-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.document-table th,
+.document-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.document-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.document-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.document-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.status.valid {
+    background-color: #4CAF50;
+}
+
+.status.invalid {
+    background-color: #f44336;
+}
+
+.status.pending {
+    background-color: #ff9800;
+}

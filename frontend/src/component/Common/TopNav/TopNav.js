@@ -15,6 +15,7 @@ function TopNav() {
         <Link to="/dashboard/document">Document</Link>
         <Link to="/dashboard/information">Information</Link>
         <Link to="/dashboard/setting">Setting</Link>
+        <li><Link to="/dashboard/statistics">Statistics</Link></li> {/* Add Statistics link */}
       </div>
       <div className="avatar">
         <img src={avatar} alt="User Avatar" />

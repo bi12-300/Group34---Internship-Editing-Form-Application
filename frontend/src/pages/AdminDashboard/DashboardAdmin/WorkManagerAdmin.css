@@ -1,0 +1,80 @@
+.body{
+  overflow: hidden;
+}
+.work-manager-layout {
+  display: flex;
+  gap: 0px;
+}
+
+/* Main Content */
+.work-manager-container {
+  flex: 1;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.time-management-sidebar {
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #11bcff;
+  border-left: 1px solid #1e9cd6;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.time-management-sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.calendar-container {
+  margin-bottom: 20px;
+}
+
+.task-list h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  padding: 10px;
+  border: 1px solid #1b9fb6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-deadline {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Calendar Styles */
+.react-calendar {
+  width: 100%;
+  border: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.react-calendar__tile--active {
+  background-color: #00aaff !important;
+  color: white !important;
+}

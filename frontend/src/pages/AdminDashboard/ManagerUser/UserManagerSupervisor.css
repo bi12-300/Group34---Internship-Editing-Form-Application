@@ -1,0 +1,49 @@
+.user-manager-supervisor {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .supervisor-card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .supervisor-details {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .supervisor-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .supervisor-info h3 {
+    margin: 0;
+  }
+  
+  .students-list {
+    margin-top: 20px;
+  }
+  
+  .students-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .students-list th, .students-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .students-list th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
